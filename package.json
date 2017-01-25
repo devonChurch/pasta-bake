@@ -1,0 +1,23 @@
+{
+  "name": "pasta-bake",
+  "version": "1.0.0",
+  "description": "A POC using AWS Lambda, Serverless and DynamoDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+	"start": "serverless"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devonChurch/pasta-bake.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devonChurch/pasta-bake/issues"
+  },
+  "homepage": "https://github.com/devonChurch/pasta-bake#readme",
+  "dependencies": {
+    "serverless": "^1.5.1"
+  }
+}
