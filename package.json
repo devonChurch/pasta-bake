@@ -4,7 +4,15 @@
   "description": "A POC using AWS Lambda, Serverless and DynamoDB",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:ping": "node -e \"require('./test/elasticsearch').ping()\"",
+    "test:count": "node -e \"require('./test/elasticsearch').count()\"",
+    "test:create": "node -e \"require('./test/elasticsearch').create()\"",
+    "test:index": "node -e \"require('./test/elasticsearch').index()\"",
+    "test:delete": "node -e \"require('./test/elasticsearch').delete()\"",
+    "test:search": "node -e \"require('./test/elasticsearch').search()\"",
+    "test:exists": "node -e \"require('./test/elasticsearch').exists()\"",
+    "test:get": "node -e \"require('./test/elasticsearch').get()\"",
+    "test:update": "node -e \"require('./test/elasticsearch').update()\"",
     "start": "serverless"
   },
   "repository": {
@@ -18,6 +26,7 @@
   },
   "homepage": "https://github.com/devonChurch/pasta-bake#readme",
   "dependencies": {
+    "elasticsearch": "^12.1.3",
     "serverless": "^1.5.1",
     "serverless-runtime-babel": "0.0.6"
   }
