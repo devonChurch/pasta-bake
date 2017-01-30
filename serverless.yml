@@ -55,22 +55,29 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-  currentTime:
-    handler: handler.currentTime
-    events:
-        - http:
-            path: currentTime
-            method: get
+    currentTime:
+        handler: handler.currentTime
+        events:
+            - http:
+                path: currentTime
+                method: get
 
-  setData:
-    handler: handler.setData
-    events:
-        - http:
-            path: setData
-            method: post
-            # set to specific orign later
-            # see https://serverless.com/framework/docs/providers/aws/events/apigateway#enabling-cors
-            cors: true
+    setData:
+        handler: handler.setData
+        events:
+            - http:
+                path: setData
+                method: post
+                # set to specific orign later
+                # see https://serverless.com/framework/docs/providers/aws/events/apigateway#enabling-cors
+                cors: true
+
+    countNuggets:
+        handler: handler.countNuggets
+        events:
+            - http:
+                path: countNuggets
+                method: get
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events

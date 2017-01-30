@@ -1,4 +1,4 @@
-const client = require('./client')();
+const client = require('../client')();
 
 module.exports.ping = () => {
 
@@ -183,7 +183,7 @@ module.exports.delete = () => {
 	client.delete({
 		index: 'pastabake',
 		type: 'nugget',
-		id: '1',
+		id: '9',
 	}, function (error, response) {
 
 		console.log('error', error);

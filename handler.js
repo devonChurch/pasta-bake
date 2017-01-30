@@ -1,5 +1,7 @@
 'use strict';
 
+const client = require('./client')();
+
 // var elasticsearch = require('elasticsearch');
 // var client = new elasticsearch.Client({
 // 	host: 'localhost:9200',
@@ -45,5 +47,27 @@ module.exports.setData = (event, context, callback) => {
 
 	// Use this code if you don't use the http event with the LAMBDA-PROXY integration
 	// callback(null, { message: 'Go Serverless v1.0! Your function executed successfully!', event });
+
+};
+
+module.exports.countNuggets = (event, context, callback) => {
+
+	client.count({
+		index: 'researchhub'
+	}, function (error, response) {
+
+		console.log('error', error);
+		console.log('response', response);
+
+		// const response = {
+		// 	statusCode: 200,
+		// 	body: JSON.stringify({
+		// 		response: response
+		// 	}),
+		// };
+
+		callback(null, response);
+
+	});
 
 };
