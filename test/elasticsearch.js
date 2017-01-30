@@ -1,10 +1,4 @@
-const elasticsearch = require('elasticsearch');
-const host = 'search-pasta-bake-56moinu2ahu3t7y5h7jqnaneti.ap-southeast-2.es.amazonaws.com';
-const client = new elasticsearch.Client({
-	host,
-	log: 'trace'
-});
-const seedNugget = require('./seed-nugget');
+const client = require('./client')();
 
 module.exports.ping = () => {
 
@@ -262,11 +256,51 @@ module.exports.update = () => {
 
 };
 
-module.exports.seed = () => {
+module.exports.bulk = () => {
 
-	console.log('- - - SEED - - -');
+	console.log('- - - BULK - - -');
 
-	console.log(seedNugget());
+	client.bulk({
+		body: [
+			// action description
+			{
+				index: {
+					_index: 'pastabake',
+					_type: 'nugget',
+					_id: 1
+				}
+			},
+			// the document to index
+			{
+				title: 'Nugget 1',
+				tags: ['foo', 'bar', 'baz'],
+				published: true,
+				published_at: '2013-01-01',
+				counter: 1
+			},
+			// action description
+			{
+				index: {
+					_index: 'pastabake',
+					_type: 'nugget',
+					_id: 2
+				}
+			},
+			// the document to index
+			{
+				title: 'Nugget 2',
+				tags: ['foo', 'bar', 'baz'],
+				published: true,
+				published_at: '2013-01-01',
+				counter: 1
+			},
+		]
+	}, function (error, response) {
+
+		console.log('error', error);
+		console.log('response', response);
+
+	});
 
 };
 

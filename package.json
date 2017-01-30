@@ -13,7 +13,7 @@
     "test:exists": "node -e \"require('./test/elasticsearch').exists()\"",
     "test:get": "node -e \"require('./test/elasticsearch').get()\"",
     "test:update": "node -e \"require('./test/elasticsearch').update()\"",
-    "test:seed": "node -e \"require('./test/elasticsearch').seed()\"",
+    "test:bulk": "node -e \"require('./test/elasticsearch').bulk()\"",
     "start": "serverless"
   },
   "repository": {
