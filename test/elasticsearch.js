@@ -4,6 +4,7 @@ const client = new elasticsearch.Client({
 	host,
 	log: 'trace'
 });
+const seedNugget = require('./seed-nugget');
 
 module.exports.ping = () => {
 
@@ -258,6 +259,14 @@ module.exports.update = () => {
 		console.log('response', response);
 
 	});
+
+};
+
+module.exports.seed = () => {
+
+	console.log('- - - SEED - - -');
+
+	console.log(seedNugget());
 
 };
 
