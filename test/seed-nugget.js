@@ -1,4 +1,5 @@
 const { randomNumber, randomText, randomTags } = require('corn-chips');
+const config = require('../config');
 const client = require('../client')();
 
 function generateWords(min, max) {
@@ -45,8 +46,8 @@ function generateRequest() {
 
 		const index = {
 			index: {
-				_index: 'researchhub',
-				_type: 'nugget',
+				_index: config.index,
+				_type: config.type.nugget,
 				_id: `${i}`
 			}
 		};

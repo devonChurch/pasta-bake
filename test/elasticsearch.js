@@ -1,4 +1,5 @@
 const client = require('../client')();
+const config = require('../config');
 
 module.exports.ping = () => {
 
@@ -22,7 +23,7 @@ module.exports.count = () => {
 	console.log('- - - COUNT - - -');
 
 	client.count({
-		index: 'pastabake'
+		index: config.index
 	}, function (error, response) {
 
 		console.log('response', response);
@@ -36,8 +37,8 @@ module.exports.create = () => {
 	console.log('- - - CREATE - - -');
 
 	client.create({
-		index: 'pastabake',
-		type: 'nugget',
+		index: config.index,
+		type: config.type.nugget,
 		id: '1',
 		body: {
 			title: 'Nugget 1',
@@ -68,8 +69,8 @@ module.exports.index = () => {
 	console.log('- - - INDEX - - -');
 
 	client.index({
-		index: 'pastabake',
-		type: 'nugget',
+		index: config.index,
+		type: config.type.nugget,
 		id: '1',
 		body: {
 			title: 'Nugget 1 =)',
@@ -92,14 +93,61 @@ module.exports.search = () => {
 	console.log('- - - SEARCH - - -');
 
 	client.search({
-		index: 'pastabake',
-		type: 'nugget',
+		index: config.index,
+		type: config.type.nugget,
+		// size: 3, // works
+		// from: 3, // works
+		// sort: xxxxx,
+
+		// works (free text search)
+		// body: {
+		// 	query: {
+		// 		query_string: {
+		// 			query: '(1)',
+		// 			fields: ['title']
+		// 		}
+		// 	}
+		// }
+
+		// works (search for a single term)
+		// body: {
+		// 	filter: {
+		// 		term: {
+		// 			region: 'nz'
+		// 		}
+		// 	}
+		// }
+
+		// works (search for multiple term(s))
+		// body: {
+		// 	filter: {
+		// 		terms: {
+		// 			region: ['nz', 'us']
+		// 		}
+		// 	}
+		// }
+
+		body: {
+			filter: {
+				bool : {
+					must: [
+						{ terms: { region: ['nz', 'us'] } },
+						{ terms: { year: ['2017'] } }
+					]
+				}
+			}
+		}
+
+		// filter: {
+		// 	term: { region: 'nz' }
+		// }
+
 		// filter: [
 		// 	{ id: '1' }
 		// ]
-		filter: [
-			{ title: 'Nugget 1' }
-		]
+		// filter: [
+		// 	{ title: 'Nugget 1' }
+		// ]
 		// body: {
 		// 	bool: {
 		// 		must: {
@@ -181,8 +229,8 @@ module.exports.delete = () => {
 	console.log('- - - DELETE - - -');
 
 	client.delete({
-		index: 'pastabake',
-		type: 'nugget',
+		index: config.index,
+		type: config.type.nugget,
 		id: '9',
 	}, function (error, response) {
 
@@ -198,8 +246,8 @@ module.exports.exists = () => {
 	console.log('- - - EXISTS - - -');
 
 	client.exists({
-		index: 'pastabake',
-		type: 'nugget',
+		index: config.index,
+		type: config.type.nugget,
 		id: '1',
 	}, function (error, exists) {
 
@@ -222,8 +270,8 @@ module.exports.get = () => {
 	console.log('- - - GET - - -');
 
 	client.get({
-		index: 'pastabake',
-		type: 'nugget',
+		index: config.index,
+		type: config.type.nugget,
 		id: '1',
 	}, function (error, response) {
 
@@ -239,8 +287,8 @@ module.exports.update = () => {
 	console.log('- - - UPDATE - - -');
 
 	client.update({
-		index: 'pastabake',
-		type: 'nugget',
+		index: config.index,
+		type: config.type.nugget,
 		id: '1',
 		body: {
 			doc: {
@@ -265,8 +313,8 @@ module.exports.bulk = () => {
 			// action description
 			{
 				index: {
-					_index: 'pastabake',
-					_type: 'nugget',
+					_index: config.index,
+					_type: config.type.nugget,
 					_id: 1
 				}
 			},
@@ -281,8 +329,8 @@ module.exports.bulk = () => {
 			// action description
 			{
 				index: {
-					_index: 'pastabake',
-					_type: 'nugget',
+					_index: config.index,
+					_type: config.type.nugget,
 					_id: 2
 				}
 			},

@@ -88,7 +88,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/pasta-bake/dev/1485753347437-2017-01-30T05:15:47.437Z/pasta-bake.zip"
+          "S3Key": "serverless/pasta-bake/dev/1485767341447-2017-01-30T09:09:01.447Z/pasta-bake.zip"
         },
         "FunctionName": "pasta-bake-dev-currentTime",
         "Handler": "handler.currentTime",
@@ -107,14 +107,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "CurrentTimeLambdaVersioncbYkJpyswlN4FtQ8Sl5DHjGoqnOtK32YdLDlcMALhWM": {
+    "CurrentTimeLambdaVersionaGuY3nyP87jRX2HVjRWSv47mB9OhJOnBRik0gMWqR8": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "CurrentTimeLambdaFunction"
         },
-        "CodeSha256": "cbYkJpyswlN4FtQ8Sl5DHjGoqnOtK32YdLDlcMALhWM="
+        "CodeSha256": "aGuY+3nyP87jRX2HVjRWSv47mB9OhJOnBRik0gMWqR8="
       }
     },
     "SetDataLambdaFunction": {
@@ -124,7 +124,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/pasta-bake/dev/1485753347437-2017-01-30T05:15:47.437Z/pasta-bake.zip"
+          "S3Key": "serverless/pasta-bake/dev/1485767341447-2017-01-30T09:09:01.447Z/pasta-bake.zip"
         },
         "FunctionName": "pasta-bake-dev-setData",
         "Handler": "handler.setData",
@@ -143,14 +143,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "SetDataLambdaVersioncbYkJpyswlN4FtQ8Sl5DHjGoqnOtK32YdLDlcMALhWM": {
+    "SetDataLambdaVersionaGuY3nyP87jRX2HVjRWSv47mB9OhJOnBRik0gMWqR8": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "SetDataLambdaFunction"
         },
-        "CodeSha256": "cbYkJpyswlN4FtQ8Sl5DHjGoqnOtK32YdLDlcMALhWM="
+        "CodeSha256": "aGuY+3nyP87jRX2HVjRWSv47mB9OhJOnBRik0gMWqR8="
       }
     },
     "CountNuggetsLambdaFunction": {
@@ -160,7 +160,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/pasta-bake/dev/1485753347437-2017-01-30T05:15:47.437Z/pasta-bake.zip"
+          "S3Key": "serverless/pasta-bake/dev/1485767341447-2017-01-30T09:09:01.447Z/pasta-bake.zip"
         },
         "FunctionName": "pasta-bake-dev-countNuggets",
         "Handler": "handler.countNuggets",
@@ -179,14 +179,50 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "CountNuggetsLambdaVersioncbYkJpyswlN4FtQ8Sl5DHjGoqnOtK32YdLDlcMALhWM": {
+    "CountNuggetsLambdaVersionaGuY3nyP87jRX2HVjRWSv47mB9OhJOnBRik0gMWqR8": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "CountNuggetsLambdaFunction"
         },
-        "CodeSha256": "cbYkJpyswlN4FtQ8Sl5DHjGoqnOtK32YdLDlcMALhWM="
+        "CodeSha256": "aGuY+3nyP87jRX2HVjRWSv47mB9OhJOnBRik0gMWqR8="
+      }
+    },
+    "FetchNuggetsLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "ServerlessDeploymentBucket"
+          },
+          "S3Key": "serverless/pasta-bake/dev/1485767341447-2017-01-30T09:09:01.447Z/pasta-bake.zip"
+        },
+        "FunctionName": "pasta-bake-dev-fetchNuggets",
+        "Handler": "handler.fetchNuggets",
+        "MemorySize": 1024,
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        },
+        "Runtime": "nodejs4.3",
+        "Timeout": 6
+      },
+      "DependsOn": [
+        "IamPolicyLambdaExecution",
+        "IamRoleLambdaExecution"
+      ]
+    },
+    "FetchNuggetsLambdaVersionaGuY3nyP87jRX2HVjRWSv47mB9OhJOnBRik0gMWqR8": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "FetchNuggetsLambdaFunction"
+        },
+        "CodeSha256": "aGuY+3nyP87jRX2HVjRWSv47mB9OhJOnBRik0gMWqR8="
       }
     },
     "ApiGatewayRestApi": {
@@ -235,6 +271,21 @@
           ]
         },
         "PathPart": "countNuggets",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      }
+    },
+    "ApiGatewayResourceFetchnuggets": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Fn::GetAtt": [
+            "ApiGatewayRestApi",
+            "RootResourceId"
+          ]
+        },
+        "PathPart": "fetchNuggets",
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         }
@@ -398,7 +449,45 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1485753347570": {
+    "ApiGatewayMethodFetchnuggetsGet": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "GET",
+        "RequestParameters": {},
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceFetchnuggets"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:aws:apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "FetchNuggetsLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        },
+        "MethodResponses": []
+      }
+    },
+    "ApiGatewayDeployment1485767341619": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -409,7 +498,8 @@
       "DependsOn": [
         "ApiGatewayMethodCurrenttimeGet",
         "ApiGatewayMethodSetdataPost",
-        "ApiGatewayMethodCountnuggetsGet"
+        "ApiGatewayMethodCountnuggetsGet",
+        "ApiGatewayMethodFetchnuggetsGet"
       ]
     },
     "CurrentTimeLambdaPermissionApiGateway": {
@@ -510,6 +600,39 @@
           ]
         }
       }
+    },
+    "FetchNuggetsLambdaPermissionApiGateway": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "FetchNuggetsLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:aws:execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "/*/*"
+            ]
+          ]
+        }
+      }
     }
   },
   "Outputs": {
@@ -530,7 +653,7 @@
     "CurrentTimeLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CurrentTimeLambdaVersioncbYkJpyswlN4FtQ8Sl5DHjGoqnOtK32YdLDlcMALhWM"
+        "Ref": "CurrentTimeLambdaVersionaGuY3nyP87jRX2HVjRWSv47mB9OhJOnBRik0gMWqR8"
       }
     },
     "SetDataLambdaFunctionArn": {
@@ -545,7 +668,7 @@
     "SetDataLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "SetDataLambdaVersioncbYkJpyswlN4FtQ8Sl5DHjGoqnOtK32YdLDlcMALhWM"
+        "Ref": "SetDataLambdaVersionaGuY3nyP87jRX2HVjRWSv47mB9OhJOnBRik0gMWqR8"
       }
     },
     "CountNuggetsLambdaFunctionArn": {
@@ -560,7 +683,22 @@
     "CountNuggetsLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CountNuggetsLambdaVersioncbYkJpyswlN4FtQ8Sl5DHjGoqnOtK32YdLDlcMALhWM"
+        "Ref": "CountNuggetsLambdaVersionaGuY3nyP87jRX2HVjRWSv47mB9OhJOnBRik0gMWqR8"
+      }
+    },
+    "FetchNuggetsLambdaFunctionArn": {
+      "Description": "Lambda function info",
+      "Value": {
+        "Fn::GetAtt": [
+          "FetchNuggetsLambdaFunction",
+          "Arn"
+        ]
+      }
+    },
+    "FetchNuggetsLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "FetchNuggetsLambdaVersionaGuY3nyP87jRX2HVjRWSv47mB9OhJOnBRik0gMWqR8"
       }
     },
     "ServiceEndpoint": {

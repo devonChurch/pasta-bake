@@ -1,10 +1,10 @@
 const elasticsearch = require('elasticsearch');
-const host = 'search-pasta-bake-56moinu2ahu3t7y5h7jqnaneti.ap-southeast-2.es.amazonaws.com';
+const config = require('./config');
 
 function generateClient() {
 
 	return new elasticsearch.Client({
-		host,
+		host: config.host,
 		log: 'trace'
 	});
 
