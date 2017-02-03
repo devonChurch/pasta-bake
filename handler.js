@@ -85,6 +85,8 @@ module.exports.countNuggets = (event, context, callback) => {
 
 module.exports.fetchNuggets = (event, context, callback) => {
 
+	console.log('event', event);
+
 	client.search({
 		index: config.index,
 		type: config.type.nugget,
@@ -123,9 +125,7 @@ module.exports.fetchNuggets = (event, context, callback) => {
 		callback(null, {
 			statusCode: 200,
 			headers: corsSupport,
-			body: JSON.stringify({
-				count: response.hits.hits
-			}),
+			body: 'done', // JSON.stringify(response.hits.hits),
 		});
 
 	}, function (err) {

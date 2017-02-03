@@ -133,6 +133,8 @@ module.exports.search = () => {
 					must: [
 						{ terms: { region: ['nz', 'us'] } },
 						{ terms: { year: ['2017'] } }
+						// { terms: { region: [] } },
+						// { terms: { year: [] } }
 					]
 				}
 			}

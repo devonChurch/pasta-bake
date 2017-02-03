@@ -10,7 +10,7 @@ const data = new Array(10).fill(0).map((v, i) => {
 
 });
 
-console.log('sending....', data);
+// console.log('sending....', data);
 
 // request.post(url).form(form);
 // request.post({
@@ -28,7 +28,7 @@ request({
 	method: 'POST',
 	url,
 	json: true,
-	body: data,
+	body: {data: 'hello'},
 },
 function(err, httpResponse, body) {
 	// console.log('\nerr', err);
