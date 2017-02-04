@@ -1,16 +1,4 @@
 const { corsHeaders } = require('../helpers/');
-// const corsHeaders = require('../helpers/cors-headers');
-// const corsHeaders = {
-// 	'Access-Control-Allow-Origin': '*', // Required for CORS support to work
-// 	'Access-Control-Allow-Credentials': true, //
-// };
-
-console.log('corsHeaders', corsHeaders);
-
-// function foo() {
-//
-// 	console.log('foo');
-// }
 
 function foo(event, context, callback) {
 
@@ -31,7 +19,6 @@ function foo(event, context, callback) {
 	const response = {
 		statusCode: 200,
 		headers: corsHeaders,
-		// headers: {},
 		body: JSON.stringify(spreadAnObject),
 	};
 

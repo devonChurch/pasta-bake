@@ -79,20 +79,20 @@ functions:
     #             # see https://serverless.com/framework/docs/providers/aws/events/apigateway#enabling-cors
     #             cors: true
 
-    # countNuggets:
-    #     handler: handler.countNuggets
-    #     events:
-    #         - http:
-    #             path: countNuggets
-    #             method: get
+    countNuggets:
+        handler: handler.countNuggets
+        events:
+            - http:
+                path: countNuggets
+                method: get
 
-    # fetchNuggets:
-    #     handler: handler.fetchNuggets
-    #     events:
-    #         - http:
-    #             path: fetchNuggets
-    #             method: post
-    #             cors: true
+    searchNuggets:
+        handler: handler.searchNuggets
+        events:
+            - http:
+                path: searchNuggets
+                method: post
+                cors: true
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events

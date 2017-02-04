@@ -37,13 +37,8 @@ module.exports = () => {
 
 				{
 					test: /\.js$/,
-					// include: [resolve(__dirname, 'src')],
-					exclude: [/node_modules/],
-					// loaders: ['babel-loader'],
+					include: [resolve(__dirname, 'src')],
 					loader: 'babel-loader',
-					// options: {
-					// 	presets: ['stage-0'],
-					// },
 
 				},
 
@@ -51,11 +46,11 @@ module.exports = () => {
 
 		},
 
-		devtool: false, // isProduction ? 'source-map' : 'eval',
+		devtool: false,
 
 		context: __dirname,
 
-		target: 'node', // 'web', // 'node', //
+		target: 'node', // 'web',
 
 	};
 

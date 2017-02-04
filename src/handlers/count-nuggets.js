@@ -8,7 +8,7 @@ function countNuggets(event, context, callback) {
 
 	client.count({
 		index: config.index,
-		// type: config.type.nugget,
+		type: config.type.nugget,
 	}, (error, response) => {
 
 		console.log('error', error);

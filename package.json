@@ -4,7 +4,7 @@
   "description": "A POC using AWS Lambda, Serverless and DynamoDB",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack -p",
     "test:ping": "node -e \"require('./test/elasticsearch').ping()\"",
     "test:count": "node -e \"require('./test/elasticsearch').count()\"",
     "test:create": "node -e \"require('./test/elasticsearch').create()\"",
