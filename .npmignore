@@ -5,5 +5,12 @@ jspm_packages
 # serverless directories
 .serverless
 
+#cruft
+webpack.config.js
+.eslintrc.json
+.babelrc
+README.md
+LICENSE
+
 # test directory
 test

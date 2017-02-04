@@ -5,7 +5,7 @@ function generateClient() {
 
 	return new elasticsearch.Client({
 		host: config.host,
-		log: 'trace'
+		log: 'trace',
 	});
 
 }

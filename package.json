@@ -4,6 +4,7 @@
   "description": "A POC using AWS Lambda, Serverless and DynamoDB",
   "main": "index.js",
   "scripts": {
+    "build": "webpack",
     "test:ping": "node -e \"require('./test/elasticsearch').ping()\"",
     "test:count": "node -e \"require('./test/elasticsearch').count()\"",
     "test:create": "node -e \"require('./test/elasticsearch').create()\"",
@@ -28,7 +29,18 @@
   "homepage": "https://github.com/devonChurch/pasta-bake#readme",
   "dependencies": {
     "elasticsearch": "^12.1.3",
-    "serverless": "^1.5.1",
-    "serverless-runtime-babel": "0.0.6"
+    "serverless": "^1.5.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "babel-preset-latest": "^6.22.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "eslint": "^3.14.0",
+    "eslint-config-airbnb-base": "^11.0.1",
+    "eslint-loader": "^1.6.1",
+    "eslint-plugin-import": "^2.2.0",
+    "jest": "^18.1.0",
+    "webpack": "^2.2.0"
   }
 }

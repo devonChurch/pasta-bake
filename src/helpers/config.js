@@ -4,7 +4,7 @@ const config = {
 	type: {
 		catalogue: 'catalogue',
 		nugget: 'nugget',
-	}
+	},
 };
 
 module.exports = config;

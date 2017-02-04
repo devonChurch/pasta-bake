@@ -55,38 +55,44 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-    currentTime:
-        handler: handler.currentTime
+    foo:
+        handler: handler.foo
         events:
             - http:
-                path: currentTime
+                path: foo
                 method: get
 
-    setData:
-        handler: handler.setData
-        events:
-            - http:
-                path: setData
-                method: post
-                # set to specific orign later
-                # see https://serverless.com/framework/docs/providers/aws/events/apigateway#enabling-cors
-                cors: true
+    # currentTime:
+    #     handler: handler.currentTime
+    #     events:
+    #         - http:
+    #             path: currentTime
+    #             method: get
 
-    countNuggets:
-        handler: handler.countNuggets
-        events:
-            - http:
-                path: countNuggets
-                method: get
-                # cors: true
+    # setData:
+    #     handler: handler.setData
+    #     events:
+    #         - http:
+    #             path: setData
+    #             method: post
+    #             # set to specific orign later
+    #             # see https://serverless.com/framework/docs/providers/aws/events/apigateway#enabling-cors
+    #             cors: true
 
-    fetchNuggets:
-        handler: handler.fetchNuggets
-        events:
-            - http:
-                path: fetchNuggets
-                method: post
-                cors: true
+    # countNuggets:
+    #     handler: handler.countNuggets
+    #     events:
+    #         - http:
+    #             path: countNuggets
+    #             method: get
+
+    # fetchNuggets:
+    #     handler: handler.fetchNuggets
+    #     events:
+    #         - http:
+    #             path: fetchNuggets
+    #             method: post
+    #             cors: true
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
