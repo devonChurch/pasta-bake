@@ -1,0 +1,22 @@
+{
+	"extends": "airbnb-base",
+	"env": {
+		"shared-node-browser": true
+	},
+	"parserOptions": {
+        "ecmaVersion": 2017,
+        "sourceType": "module"
+    },
+	"plugins": [
+	    "import"
+	],
+	"rules": {
+	    "no-console": "off",
+		"no-tabs": "off",
+		"padded-blocks": ["warn", "always"],
+		"indent": ["warn", "tab"],
+		"no-mixed-operators": ["warn", {
+			"allowSamePrecedence": true
+		}]
+	}
+}

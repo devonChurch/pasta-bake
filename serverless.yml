@@ -55,22 +55,29 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-    currentTime:
-        handler: handler.currentTime
+    foo:
+        handler: handler.foo
         events:
             - http:
-                path: currentTime
+                path: foo
                 method: get
 
-    setData:
-        handler: handler.setData
-        events:
-            - http:
-                path: setData
-                method: post
-                # set to specific orign later
-                # see https://serverless.com/framework/docs/providers/aws/events/apigateway#enabling-cors
-                cors: true
+    # currentTime:
+    #     handler: handler.currentTime
+    #     events:
+    #         - http:
+    #             path: currentTime
+    #             method: get
+
+    # setData:
+    #     handler: handler.setData
+    #     events:
+    #         - http:
+    #             path: setData
+    #             method: post
+    #             # set to specific orign later
+    #             # see https://serverless.com/framework/docs/providers/aws/events/apigateway#enabling-cors
+    #             cors: true
 
     countNuggets:
         handler: handler.countNuggets
@@ -78,13 +85,12 @@ functions:
             - http:
                 path: countNuggets
                 method: get
-                # cors: true
 
-    fetchNuggets:
-        handler: handler.fetchNuggets
+    searchNuggets:
+        handler: handler.searchNuggets
         events:
             - http:
-                path: fetchNuggets
+                path: searchNuggets
                 method: post
                 cors: true
 
