@@ -1,2 +1,2 @@
 # pasta-bake
-A POC using AWS Lambda, Serverless and DynamoDB
+A POC using AWS Lambda, Serverless and AWS Elasticsearch
