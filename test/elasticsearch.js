@@ -1,5 +1,9 @@
-const client = require('../client')();
-const config = require('../config');
+// const client = require('../client')();
+// const config = require('../config');
+
+const { corsHeaders, generateClient, config } = require('../src/helpers/');
+
+const client = generateClient();
 
 module.exports.ping = () => {
 
@@ -310,6 +314,27 @@ module.exports.bulk = () => {
 
 	console.log('- - - BULK - - -');
 
+	// client.bulk({
+	//   body: [
+	//     // action description
+	//     { index:  { _index: config.index, _type: config.type.nugget, _id: 1 } },
+	//      // the document to index
+	//     { title: 'foo' },
+	//
+	// 	{ index:  { _index: config.index, _type: config.type.nugget, _id: 2 } },
+	// 	{ title: 'bar' },
+	//     // // action description
+	//     // { update: { _index: 'myindex', _type: 'mytype', _id: 2 } },
+	//     // // the document to update
+	//     // { doc: { title: 'foo' } },
+	//     // // action description
+	//     // { delete: { _index: 'myindex', _type: 'mytype', _id: 3 } },
+	//     // // no document needed for this delete
+	//   ]
+	// }, function (err, resp) {
+	//   // ...
+	// });
+
 	client.bulk({
 		body: [
 			// action description
@@ -317,7 +342,7 @@ module.exports.bulk = () => {
 				index: {
 					_index: config.index,
 					_type: config.type.nugget,
-					_id: 1
+					_id: 1,
 				}
 			},
 			// the document to index
@@ -333,7 +358,7 @@ module.exports.bulk = () => {
 				index: {
 					_index: config.index,
 					_type: config.type.nugget,
-					_id: 2
+					_id: 2,
 				}
 			},
 			// the document to index
@@ -345,12 +370,51 @@ module.exports.bulk = () => {
 				counter: 1
 			},
 		]
-	}, function (error, response) {
-
-		console.log('error', error);
-		console.log('response', response);
-
+	}, function (err, resp) {
+		// ...
 	});
+
+	// client.bulk({
+	// 	body: [
+	// 		// action description
+	// 		{
+	// 			index: {
+	// 				_index: config.index,
+	// 				_type: config.type.nugget,
+	// 				_id: 1
+	// 			}
+	// 		},
+	// 		// the document to index
+	// 		{
+	// 			title: 'Nugget 1',
+	// 			tags: ['foo', 'bar', 'baz'],
+	// 			published: true,
+	// 			published_at: '2013-01-01',
+	// 			counter: 1
+	// 		},
+	// 		// action description
+	// 		{
+	// 			index: {
+	// 				_index: config.index,
+	// 				_type: config.type.nugget,
+	// 				_id: 2
+	// 			}
+	// 		},
+	// 		// the document to index
+	// 		{
+	// 			title: 'Nugget 2',
+	// 			tags: ['foo', 'bar', 'baz'],
+	// 			published: true,
+	// 			published_at: '2013-01-01',
+	// 			counter: 1
+	// 		},
+	// 	]
+	// }, function (error, response) {
+	//
+	// 	console.log('error', error);
+	// 	console.log('response', response);
+	//
+	// });
 
 };
 

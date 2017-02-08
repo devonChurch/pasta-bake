@@ -1,6 +1,10 @@
 const { randomNumber, randomText, randomTags } = require('corn-chips');
-const config = require('../config');
-const client = require('../client')();
+// const config = require('../src/helpers/config');
+// const client = require('../src/helpers/generate-client')();
+
+const { corsHeaders, generateClient, config } = require('../src/helpers/');
+
+const client = generateClient();
 
 function generateWords(min, max) {
 
@@ -64,8 +68,10 @@ function generateRequest() {
 
 function sendBulkRequest() {
 
+	const body = generateRequest();
+
 	client.bulk({
-		body: generateRequest()
+		body
 	}, function (error, response) {
 
 		console.log('error', error);
